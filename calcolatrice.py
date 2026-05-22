@@ -15,6 +15,11 @@ def dividi(a: float, b: float) -> float:
 def potenza(a: float, b: float) -> float:
     return a ** b
 
+def radice(a: float) -> float:
+    if a < 0:
+        raise ValueError("Impossibile calcolare la radice di un numero negativo")
+    return a ** 0.5
+
 if __name__ == "__main__":
     print("Somma:", somma(10, 5))
     
