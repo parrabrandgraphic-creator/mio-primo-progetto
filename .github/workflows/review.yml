@@ -1,0 +1,28 @@
+name: Review Automatica con Claude
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Scarica il codice
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Installa Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Installa Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Lancia la review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python auto_review.py
