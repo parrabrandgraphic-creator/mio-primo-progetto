@@ -1,17 +1,21 @@
-def somma(a, b):
+def somma(a: float, b: float) -> float:
     return a + b
 
-def sottrai(a, b):
+def sottrai(a: float, b: float) -> float:
     return a - b
 
-def moltiplica(a, b):
+def moltiplica(a: float, b: float) -> float:
     return a * b
 
-def dividi(a, b):
+def dividi(a: float, b: float) -> float:
+    if b == 0:
+        raise ValueError("Impossibile dividere per zero")
     return a / b
 
-risultato = somma(10, 5)
-print("Somma:", risultato)
+if __name__ == "__main__":
+    print("Somma:", somma(10, 5))
 
-risultato2 = dividi(10, 0)
-print("Divisione:", risultato2)
+    try:
+        print("Divisione:", dividi(10, 0))
+    except ValueError as e:
+        print("Errore:", e)
